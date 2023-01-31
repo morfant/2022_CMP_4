@@ -1,0 +1,26 @@
+class:: SimpleNoise
+summary:: A simple noise generator plugin
+related:: TODO
+categories:: UGens>TODO
+
+description::
+
+A simple noise generator plugin
+
+
+classmethods::
+
+method::ar, kr
+
+argument::TODO
+
+argument::TODO
+
+
+examples::
+
+code::
+
+{ SimpleNoise.ar(/* TODO */) }.play
+
+::

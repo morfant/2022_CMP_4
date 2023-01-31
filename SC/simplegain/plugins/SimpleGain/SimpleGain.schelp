@@ -1,0 +1,36 @@
+TITLE:: SimpleGain
+summary:: A simple audio volume gain plugin
+categories:: UGens>SimpleGain
+related:: etc.
+
+DESCRIPTION::
+A simple audio volume gain plugin.
+
+
+CLASSMETHODS::
+
+METHOD:: ar
+Get multiplied gain.
+
+ARGUMENT:: input
+Audio rate source.
+
+ARGUMENT:: gain
+Audio rate / Non-Audio rate value.
+
+returns:: Amplitude adjusted audio source.
+
+
+INSTANCEMETHODS::
+
+METHOD:: checkInputs
+
+
+EXAMPLES::
+
+code::
+{SimpleGain.ar(BrownNoise.ar(1.0), LFSaw.ar(2).range(0, 0.2))}.play; // Audio rate gain
+
+{SimpleGain.ar(PinkNoise.ar(0.1), 0.4)}.play; // Non-Audio rate gain
+
+::

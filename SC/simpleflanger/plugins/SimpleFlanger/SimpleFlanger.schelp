@@ -1,0 +1,65 @@
+class:: SimpleFlanger
+summary:: Simple flanger
+related:: Classes/DelayN
+categories:: UGens>Filter
+
+description::
+Simple flanger plugin using hopping of read position of circular buffer to modulate delay time internally.
+
+Based on <The SuperCollider Book, chapter 25>
+
+classmethods::
+
+method::ar, kr
+
+argument:: in
+Input source.
+
+argument:: maxDt
+Max Delay Time in seconds.
+
+argument:: rate
+Flanging rate. (about 0.005 ~ 0.03)
+
+argument:: depth
+Adjust a ratio of wet and dry. 1.0(wet) ~ 0.0(dry)
+
+argument:: fdbamt
+Amount of feedback. (0.0 ~ 0.9999999)
+
+argument:: debug
+Post out delay time for debugging. (0:False or 1:True)
+
+argument:: mul
+Output will be multiplied by this value.
+
+argument:: add
+This value will be added to the output.
+
+examples::
+
+code::
+
+{ SimpleFlanger.ar(LFSaw.ar(100, mul: 0.2), 0.02, 0.5, 0.5, 0.5)}.play;
+
+(
+x = {
+	var son, dly, out;
+	son = Saw.ar([100, 150, 200], mul: 0.1).mean;
+	out = SimpleFlanger.ar(son, 0.02, 0.2);
+	out.dup * 0.7;
+}.play
+)
+
+(
+b = Buffer.read(s, Platform.resourceDir +/+ "sounds/a11wlk01.wav");
+x = {
+    var son, dly, out;
+    // son = Saw.ar([100, 150, 200], mul: 0.1).mean;
+    son = PlayBuf.ar(1, b, loop: 1);
+    out = SimpleFlanger.ar(son, 0.02, rate: MouseX.kr(0.01, 0.8).poll(1), depth: 0.5, fdbamt: 0.99);
+    out * 0.7;
+}.play
+)
+
+::

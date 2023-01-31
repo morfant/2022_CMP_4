@@ -1,0 +1,26 @@
+class:: SimpleSine
+summary:: A simple Sine wave generator
+related:: TODO
+categories:: UGens>TODO
+
+description::
+
+A simple Sine wave generator
+
+
+classmethods::
+
+method::ar, kr
+
+argument::TODO
+
+argument::TODO
+
+
+examples::
+
+code::
+{SimpleSine.ar(LFSaw.ar(1).range(100, 440), mul: 0.1)!2}.play
+{SimpleSine.ar(400, mul: 0.4)!2}.play
+
+::

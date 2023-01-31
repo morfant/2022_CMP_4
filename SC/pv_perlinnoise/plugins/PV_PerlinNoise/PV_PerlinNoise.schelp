@@ -1,0 +1,40 @@
+class:: PV_PerlinNoise
+summary:: A Perlin noise alogrithm based Noise generator
+related:: Classes/FFT, Classes/IFFT
+categories:: UGens>FFT
+
+description::
+A Perlin noise alogrithm based Noise generator
+
+
+classmethods::
+
+method::new
+
+argument::stepScale
+A step scale factor
+
+argument::octave
+
+argument::persistence
+
+argument::seed
+
+argument::magScale
+
+
+examples::
+
+code::
+
+(
+{
+    var in, chain;
+    in = WhiteNoise.ar(1.0);
+    chain = FFT(LocalBuf(1024), in);
+    chain = PV_PerlinNoise.new(chain, stepScale: 0.1, ocatave: 6, magScale: 2);
+    IFFT(chain);
+}.play
+)
+
+::
